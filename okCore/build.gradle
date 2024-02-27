@@ -15,24 +15,24 @@ dependencies {
     implementation 'org.jetbrains:annotations:16.0.1'
 
     /*kotlin基础库*/
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.21"
 
     /**
      * Kotlin-协程 https://github.com/hltj/kotlinx.coroutines-cn/blob/master/README.md#using-in-your-projects
      * */
-    api kotlinDeps.kotlinxCoroutinesCore
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
 
     /*
     https://github.com/google/gson
     */
-    compileOnly "com.google.code.gson:gson:$gson_version"
+    compileOnly "com.google.code.gson:gson:2.8.7"
 
     /*
     常规Jackson引用
     实际会引入jackson-core、jackson-annotations依赖
     * https://github.com/FasterXML/jackson-dataformat-xml
     * */
-    compileOnly "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
+    compileOnly "com.fasterxml.jackson.core:jackson-databind:2.13.2"
 
     /**
      * Jackson支持Kotlin&data class
@@ -46,20 +46,20 @@ dependencies {
      *      测试结果：2.9.6版能解决该问题  2.10.5版本不存在
      *      测试了2.13.1版本，发现程序运行过程中经常需要等很久才响应（几十秒），Log不断输出 Background sticky concurrent mark sweep GC freed等提示语
      */
-    compileOnly "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_version"
+    compileOnly "com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2"
 
     /*
     https://github.com/square/retrofit/wiki/Converters
     https://github.com/ligboy/retrofit-converter-fastjson
     https://github.com/alibaba/fastjson
     * */
-    compileOnly "com.alibaba:fastjson:$fastjson_version"
+    compileOnly "com.alibaba:fastjson:1.2.10"
 
 
     /**
      * https://github.com/square/moshi
      */
-    compileOnly "com.squareup.moshi:moshi:$moshi_version"
+    compileOnly "com.squareup.moshi:moshi:1.14.0"
 
 }
 
@@ -71,86 +71,9 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     }
 }
 
-
 tasks.withType(Javadoc) {
     failOnError false
     options.addStringOption('Xdoclint:none', '-quiet')
     options.addStringOption('encoding', 'UTF-8')
     options.addStringOption('charSet', 'UTF-8')
 }
-
-import com.vanniktech.maven.publish.SonatypeHost
-mavenPublishing {
-//    publishToMavenCentral(SonatypeHost.DEFAULT)
-//    // or when publishing to https://s01.oss.sonatype.org
-    publishToMavenCentral(SonatypeHost.S01,false)
-
-    signAllPublications()
-}
-
-//
-////解决问题：Cannot inline bytecode built with JVM target 1.8 into bytecode that is being built with JVM target 1.6
-//// 参考来源： https://blog.csdn.net/sweet_smile5/article/details/98858919?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2.pc_relevant_antiscanv2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2.pc_relevant_antiscanv2&utm_relevant_index=3
-//tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-//    kotlinOptions {
-//        jvmTarget = "1.8"
-//    }
-//}
-//
-///*以下为maven发布配置*/
-//task generateSourcesJar(type: Jar) {
-//    group = 'jar'
-//    from sourceSets.main.java.srcDirs
-//    classifier = 'sources'
-//}
-//
-////task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
-////    outputFormat = "javadoc"
-////    outputDirectory = javadoc.destinationDir
-////}
-//
-//task generateJavadoc(type: Jar, dependsOn: dokkaJavadoc) {
-//    group = 'jar'
-//    classifier = 'javadoc'
-//    from javadoc.destinationDir
-//}
-//
-//artifacts {
-//    archives generateJavadoc
-//    archives generateSourcesJar
-//}
-//
-//
-//
-//Properties properties = new Properties()
-//properties.load(project.rootProject.file('local.properties').newDataInputStream())
-//def NEXUS_URL = properties.getProperty('NEXUS_URL')
-//def NEXUS_USER = properties.getProperty('NEXUS_USER')
-//def NEXUS_PWD = properties.getProperty('NEXUS_PWD')
-//
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            release(MavenPublication) {
-//                from components.java
-//                groupId = GROUP_ID
-//                artifactId = ARTIFACT_ID
-//                version = PROJECT_VERSION
-//            }
-//        }
-//
-//        repositories {
-//            //仓库配置
-//            maven {
-//                //对于非 https 的仓库地址，需要设置 allowInsecureProtocol true
-//                allowInsecureProtocol true
-//                name = PROJECT_NAME //可选
-//                url = PROJECT_VERSION.endsWith('SNAPSHOT') ? NEXUS_URL_SNAPSHOT : NEXUS_URL
-//                credentials {
-//                    username = NEXUS_USER
-//                    password = NEXUS_PWD
-//                }
-//            }
-//        }
-//    }
-//}

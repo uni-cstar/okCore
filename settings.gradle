@@ -1,12 +1,11 @@
 pluginManagement {
     repositories {
-        maven { url "https://jitpack.io" }
-        maven { url 'https://maven.aliyun.com/repository/releases' }
-//        maven { url 'https://maven.aliyun.com/repository/jcenter' }
-        maven { url 'https://maven.aliyun.com/repository/google' }
+        //阿里云效提供的maven地址  https://developer.aliyun.com/mvn/guide
         maven { url 'https://maven.aliyun.com/repository/central' }
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
         maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/apache-snapshots'}
+        maven { url "https://jitpack.io" }
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -15,13 +14,12 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        maven { url "https://jitpack.io" }
-        maven { url 'https://maven.aliyun.com/repository/releases' }
-//        maven { url 'https://maven.aliyun.com/repository/jcenter' }
-        maven { url 'https://maven.aliyun.com/repository/google' }
+        //阿里云效提供的maven地址  https://developer.aliyun.com/mvn/guide
         maven { url 'https://maven.aliyun.com/repository/central' }
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
         maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/apache-snapshots'}
+        maven { url "https://jitpack.io" }
         google()
         mavenCentral()
     }
