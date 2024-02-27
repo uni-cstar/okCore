@@ -30,3 +30,4 @@ dependencyResolutionManagement {
 rootProject.name = "okCore"
 include(":app")
 include ':okCore'
+include ':okDroid'
