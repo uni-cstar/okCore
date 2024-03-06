@@ -7,6 +7,7 @@ plugins {
 }
 
 android {
+    namespace 'unics.okdroid'
     compileSdkVersion rootProject.ext.globalCompileSdkVersion
 
     defaultConfig {
@@ -53,14 +54,13 @@ dependencies {
     //permission: 个人权限处理框架
     implementation 'halo.android:permission:1.0.5-rc'
 
-    /*基础代码库*/
-    gradle.ext.depApi(this,'libcore')
-
-    gradle.ext.depApiInert(this,'adapter-imageloader')
+    /*核心：基础代码库*/
+    api 'io.github.uni-cstar:okCore:0.0.1'
+//    gradle.ext.depApiInert(this,'adapter-imageloader')
 //    debugApi project(path: ':adapter-imageloader')
 //    releaseApi(basDeps.adapterImageloader)
 
-    gradle.ext.depApiInert(this,'systemui')
+//    gradle.ext.depApiInert(this,'systemui')
 //    debugApi project(path: ':systemui')
 //    releaseApi basDeps.systemui
 
@@ -85,6 +85,29 @@ dependencies {
 
     api "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
     /*必备组件 JetPack系列 END*/
+
+    /**
+     *  Glide
+     *  <proguard>已添加混淆规则
+     *  https://github.com/bumptech/glide
+     *  https://muyangmin.github.io/glide-docs-cn/doc/download-setup.html
+     * Min Sdk Version - 使用 Glide 需要 min SDK 版本 API 14 (Ice Cream Sandwich) 或更高。
+     * Compile Sdk Version - Glide 必须使用 API 27 (Oreo MR1) 或更高版本的 SDK 来编译。+-
+     * Support Library Version - Glide 使用的支持库版本为 27。
+     */
+    api(glideDeps.glide) {
+        exclude group: "com.android.support"
+    }
+
+    /*本库未用到compiler*/
+//    kapt "com.github.bumptech.glide:compiler:$glide_version"
+    /**
+     *  Glide OkHttp集成库
+     *  将使 Glide 自动开始使用 OkHttp 来加载所有来自 http 和 https URL 的图片
+     */
+    implementation(glideDeps.okhttpIntegration) {
+        exclude group: "com.squareup.okhttp3", module: "okhttp"
+    }
 
 }
 

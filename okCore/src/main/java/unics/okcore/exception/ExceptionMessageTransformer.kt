@@ -1,6 +1,8 @@
 package unics.okcore.exception
 
 import unics.okcore.exceptionMessageTransformer
+import java.io.PrintWriter
+import java.io.StringWriter
 
 
 interface ExceptionMessageTransformer {
@@ -21,6 +23,18 @@ inline val Throwable.friendlyMessage: String
     get() = exceptionMessageTransformer.getTransformedMessage(
         this
     )
+
+/**
+ * 将异常堆栈信息转换成字符串
+ */
+inline val Throwable.stackTraceMessage: String
+    get() {
+        val sw = StringWriter()
+        val pw = PrintWriter(sw)
+        printStackTrace(pw)
+        return sw.toString()
+    }
+
 
 
 

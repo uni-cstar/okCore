@@ -73,7 +73,7 @@ inline fun <E> MutableCollection<E>.appendAll(
     elements: Collection<E>?,
     filterNotNulls: Boolean = false
 ): MutableCollection<E> {
-    unics.okcore.lang.CollectionUtils.mergeTo(this, elements, filterNotNulls)
+    CollectionUtils.mergeTo(this, elements, filterNotNulls)
     return this
 }
 
@@ -91,7 +91,7 @@ inline fun <E> MutableCollection<E>.addAllNotNulls(
 }
 
 inline fun <E> Collection<E>?.areItemsEqual(other: Collection<E>?) =
-    unics.okcore.lang.CollectionUtils.areItemsEqual(this, other)
+    CollectionUtils.areItemsEqual(this, other)
 
 /**
  * 累加 elements.hashCode()

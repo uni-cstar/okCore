@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="bas.droid.core">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -8,7 +7,7 @@
 
         <!--配置FileProvider支持-->
         <provider
-            android:name="bas.droid.core.content.FileProviderCompat"
+            android:name=".tools.content.FileProviderCompat"
             android:authorities="${applicationId}.FileProviderCompat"
             android:exported="false"
             android:grantUriPermissions="true">
