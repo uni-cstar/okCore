@@ -12,9 +12,11 @@ import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlin.coroutines.CoroutineContext
 
-fun <Intent : UiIntent<State>, State : UiState> UDFFlow(
+fun <Intent : UiIntent<State>, State : UiState> UDF(
     initial: State,
     scope: CoroutineScope,
     started: SharingStarted = SharingStarted.Eagerly,
@@ -25,7 +27,12 @@ fun <Intent : UiIntent<State>, State : UiState> UDFFlow(
 }
 
 /**
+ *
+ * SSOTUDF: single source of truth ans unidirectional data flow
+ * SSOT:single source of truth 单一数据源
+ * UDF:unidirectional data flow 单向数据流
  * 一个UDF 对应的MVI架构所需要的定义
+ * 参考链接：https://developer.android.com/topic/architecture?hl=zh-cn#single-source-of-truth
  */
 interface UDF<Intent : UiIntent<State>, State : UiState> {
 
@@ -43,6 +50,9 @@ interface UDF<Intent : UiIntent<State>, State : UiState> {
      * 提供的UiStateFlow
      */
     val uiStateFlow: SharedFlow<State>
+
+//    val currentUiState: State? get() = uiStateFlow.replayCache.firstOrNull()
+//
 }
 
 /**
@@ -61,6 +71,7 @@ private class UDFImpl<Intent : UiIntent<State>, State : UiState>(
 
     private val _uiIntents = MutableSharedFlow<Intent>(replay = 1)
 
+    private val _mutex: Mutex = Mutex()
     var currentState: State = initial
         private set
 
@@ -90,9 +101,11 @@ private class UDFImpl<Intent : UiIntent<State>, State : UiState>(
         return object : Flow<State> {
             override suspend fun collect(collector: FlowCollector<State>) {
                 this@flatReduce.collect { partialResult ->
-                    val new = partialResult.reduce(currentState)
-                    currentState = new
-                    collector.emit(new)
+                    _mutex.withLock {
+                        val new = partialResult.reduce(currentState)
+                        currentState = new
+                        collector.emit(new)
+                    }
                 }
             }
         }

@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable
 import android.util.Log
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
+import halo.android.permission.BuildConfig
 import unics.okdroid.R
 import unics.okdroid.kit.imageloader.glide.GlideEngine
 
@@ -37,7 +38,7 @@ fun initImageLoader(
     engine: Engine = unics.okdroid.kit.imageloader.engine
 ) {
     defaultImageCornerSizeAIL =
-    ctx.applicationContext.resources.getDimensionPixelSize(R.dimen.image_corner_radius_ail)
+    ctx.applicationContext.resources.getDimensionPixelSize(R.dimen.ucs_image_corner_radius)
     unics.okdroid.kit.imageloader.debuggable = debuggable
     if (unics.okdroid.kit.imageloader.debuggable) {
         logi("init: defaultImageRoundingRadius=$defaultImageCornerSizeAIL")

@@ -1,7 +1,7 @@
 package unics.okdroid.kit.imageloader
 
 import androidx.annotation.DrawableRes
-import unics.okdroidarch.R
+import unics.okdroid.R
 
 /**
  * 配置信息
@@ -24,19 +24,19 @@ class Configs internal constructor() {
      * 默认图片资源
      */
     @JvmField
-    var defaultImageRes: Int = R.drawable.image_placeholder_bas
+    var defaultImageRes: Int = R.drawable.ucs_image_placeholder
 
     /**
      * 默认圆角图片
      */
     @JvmField
-    var defaultRoundedImageRes: Int = R.drawable.image_placeholder_corner_bas
+    var defaultRoundedImageRes: Int = R.drawable.ucs_image_placeholder_corner
 
     /**
      * 默认圆形图片
      */
     @JvmField
-    var defaultCircleImageRes: Int = R.drawable.image_placeholder_circle_bas
+    var defaultCircleImageRes: Int = R.drawable.ucs_image_placeholder_circle
 
     /**
      * disk 缓存目录名字,如果为空，则使用对应Engine的默认目录名字；
@@ -49,9 +49,9 @@ class Configs internal constructor() {
         private var isDiskCacheEnabled = true
         private var isMemoryCacheEnabled: Boolean = true
         private var diskCacheFolderName: String? = null
-        private var defaultImageRes: Int = R.drawable.image_placeholder_bas
-        private var defaultRoundedImageRes: Int = R.drawable.image_placeholder_corner_bas
-        private var defaultCircleImageRes: Int = R.drawable.image_placeholder_circle_bas
+        private var defaultImageRes: Int = R.drawable.ucs_image_placeholder
+        private var defaultRoundedImageRes: Int =  R.drawable.ucs_image_placeholder_corner
+        private var defaultCircleImageRes: Int = R.drawable.ucs_image_placeholder_circle
 
         /**
          * 是否启用Disk缓存

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/image_placeholder_color_ail" />
-
-    <corners
-        android:topLeftRadius="@dimen/image_corner_radius_ail"
-        android:bottomLeftRadius="@dimen/image_corner_radius_ail"/>
-</shape>
