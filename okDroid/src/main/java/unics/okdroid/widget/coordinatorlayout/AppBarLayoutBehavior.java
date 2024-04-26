@@ -20,6 +20,8 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
  *
  * @author yuruiyin
  * @version 2018/1/3
+ *
+ * todo:此代码为三方方案，引入较早，后续组件版本迭代或许已修复相关问题，待兼容更高版本或在后续版本中进行测试
  */
 public class AppBarLayoutBehavior extends AppBarLayout.Behavior {
 

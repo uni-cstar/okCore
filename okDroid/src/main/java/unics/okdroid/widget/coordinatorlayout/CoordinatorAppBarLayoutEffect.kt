@@ -5,8 +5,8 @@ import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import androidx.annotation.FloatRange
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import bas.droid.core.R
 import com.google.android.material.appbar.AppBarLayout
+import unics.okdroid.R
 import kotlin.math.abs
 
 /**

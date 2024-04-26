@@ -5,9 +5,14 @@ import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.VisibleForTesting
+import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager.widget.getCurrentView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.launchIn
@@ -160,3 +165,27 @@ fun DebounceClick(
     return ThrottleClickListener(threshold, click)
 }
 
+/**
+ *
+ * 查找可滚动的ChildView
+ * 对于[BottomSheetBehavior.findScrollingChild]方法有如下差异：
+ * 1、不查找不可见的视图
+ * 2、ViewPager只查找当前页视图内的可滚动视图 --> 支持ViewPager多级嵌套使用情况
+ */
+fun View.findScrollingChildCompat(): View? {
+    //与官方方法不同，不查找不可见的视图
+    if (this.visibility == View.VISIBLE && ViewCompat.isNestedScrollingEnabled(this)) {
+        return this
+    }
+    if (this is ViewPager) {
+        return this.getCurrentView()?.findScrollingChildCompat()
+    } else if (this is ViewGroup) {
+        for (i in 0 until this.childCount) {
+            val scrollingChild: View? = this.getChildAt(i).findScrollingChildCompat()
+            if (scrollingChild != null) {
+                return scrollingChild
+            }
+        }
+    }
+    return null
+}

@@ -6,6 +6,7 @@ import androidx.viewpager2.widget.ViewPager2
 
 /**
  * Created by Lucio on 2021/12/21.
+ * 基于滚动方向缩放页面的转换效果：沿着垂直方向往上或者往下缩放当前页或者沿着水平方向往左或往右缩放
  * @param minScale
  */
 class ScalePageTransformer(@FloatRange(from = 0.0, to = 1.0) val minScale: Float) :
