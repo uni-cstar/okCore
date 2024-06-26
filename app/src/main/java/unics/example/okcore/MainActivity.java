@@ -1,8 +1,9 @@
 package unics.example.okcore;
-
+import unics.okdroidarch.kit.OkSysBarKt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
 
 public class MainActivity extends AppCompatActivity {
 

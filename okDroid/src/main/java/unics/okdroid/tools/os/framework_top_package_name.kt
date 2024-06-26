@@ -17,7 +17,7 @@ import android.os.Build
 import android.os.Process
 import android.provider.Settings
 import androidx.annotation.RequiresPermission
-import unics.okdroid.deprecated.util.log.loge
+import unics.okdroid.deprecated.log.loge
 import java.util.Calendar
 
 interface TopPackageNameReader {

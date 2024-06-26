@@ -10,6 +10,7 @@ import unics.okdroidarch.initOkDroidArch
 import unics.okdroid.tools.app.AppManager
 import unics.okdroid.tools.app.ApplicationManager
 import unics.okdroid.tools.os.processName
+import unics.okdroid.util.Logger
 
 /**
  * Created by Lucio on 2020-11-01.

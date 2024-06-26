@@ -1,4 +1,4 @@
-package unics.okdroid.deprecated.util.log
+package unics.okdroid.deprecated.log
 
 /**
  * 该类的目的只是为了避免频繁传Tag

@@ -1,6 +1,7 @@
-package unics.okdroid.deprecated.util.log
+package unics.okdroid.deprecated.log
 
 import unics.okdroid.deprecated.LogLevel
+import unics.okdroid.deprecated.util.log.UCSLog
 
 /**
  * 默认的Log

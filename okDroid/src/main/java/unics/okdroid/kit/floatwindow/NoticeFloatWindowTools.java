@@ -3,8 +3,9 @@ package unics.okdroid.kit.floatwindow;
 import android.app.Application;
 import android.util.Log;
 
-import unics.oktools.app.ApplicationManager;
-import unics.oktools.app.ApplicationManagerKt;
+import unics.okdroid.tools.app.ApplicationManager;
+import unics.okdroid.tools.app.ApplicationManagerKt;
+
 
 public class NoticeFloatWindowTools {
 

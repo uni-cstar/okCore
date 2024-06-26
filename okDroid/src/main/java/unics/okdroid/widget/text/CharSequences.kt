@@ -5,7 +5,7 @@
 package unics.okdroid.widget.text
 
 import android.text.TextUtils
-import libcore.lang.StringUtils
+import unics.okcore.lang.StringUtils
 
 
 /**

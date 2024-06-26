@@ -8,7 +8,7 @@ package unics.okdroid.widget.dimension
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import bas.droid.core.R
+import unics.okdroid.R
 
 /**
  * View Dimension Ratio 帮助类

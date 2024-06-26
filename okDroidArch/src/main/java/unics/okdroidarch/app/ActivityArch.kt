@@ -117,35 +117,35 @@ abstract class ActivityArch : AppCompatActivity, MultiStateUserUi, RefresherUser
      * 内联 -> 消息懒加载
      */
     inline fun logv(creator: () -> String) {
-        unicstar.droid.core.util.log.logv(sTag, creator)
+        unics.okdroid.deprecated.log .logv(sTag, creator)
     }
 
     /**
      * 内联 -> 消息懒加载
      */
     inline fun logd(creator: () -> String) {
-        unicstar.droid.core.util.log.logd(sTag, creator)
+        unics.okdroid.deprecated.log.logd(sTag, creator)
     }
 
     /**
      * 内联 -> 消息懒加载
      */
     inline fun logi(creator: () -> String) {
-        unicstar.droid.core.util.log.logi(sTag, creator)
+        unics.okdroid.deprecated.log.logi(sTag, creator)
     }
 
     /**
      * 内联 -> 消息懒加载
      */
     inline fun loge(creator: () -> String) {
-        unicstar.droid.core.util.log.loge(sTag, creator)
+        unics.okdroid.deprecated.log.loge(sTag, creator)
     }
 
     /**
      * 内联 -> 消息懒加载
      */
     inline fun loge(e: Throwable, creator: () -> String) {
-        unicstar.droid.core.util.log.loge(sTag, e, creator)
+        unics.okdroid.deprecated.log.loge(sTag, e, creator)
     }
 
 //    override fun requestPermission(permissions: Array<String>, requestCode: Int) {

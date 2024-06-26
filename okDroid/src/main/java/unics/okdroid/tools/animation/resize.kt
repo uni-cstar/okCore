@@ -7,7 +7,7 @@ import android.animation.Animator
 import android.animation.ValueAnimator
 import android.view.View
 import unics.okdroid.R
-import unics.okdroid.deprecated.util.log.logd
+import unics.okdroid.deprecated.log.logd
 
 /**
  * 动画调整view的大小

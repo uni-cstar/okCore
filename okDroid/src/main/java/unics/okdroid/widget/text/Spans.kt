@@ -79,9 +79,7 @@ fun CharSequence.toClickSpan(
 ): SpannableStringBuilder {
     val ssb: SpannableStringBuilder =
         if (this is SpannableStringBuilder) this else SpannableStringBuilder(this)
-    spans.forEach {
-        val span = it.first
-        val onSpanClick = it.second
+    spans.forEach { (span, onSpanClick) ->
         if (span.isNotEmpty()) {
             val spanIndex = this.indexOf(span)
             if (spanIndex >= 0) {

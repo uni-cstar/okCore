@@ -8,7 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.savedstate.SavedStateRegistry
 import androidx.savedstate.SavedStateRegistryOwner
-import unics.okdroid.deprecated.util.log.ilogi
+import unics.okdroid.deprecated.log.ilogi
 import java.lang.reflect.Constructor
 import java.lang.reflect.InvocationTargetException
 import java.util.*

@@ -1,7 +1,8 @@
 /**
  * Created by Lucio on 2021/12/1.
  */
-
+@file:JvmName("ActivityKt")
+@file:JvmMultifileClass
 package unics.okdroid.tools.activity
 
 import android.app.Activity

@@ -8,7 +8,7 @@ import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.annotation.IntRange
-import libcore.lang.toBase64EncodeString
+import unics.okcore.lang.toBase64EncodeString
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.InputStream

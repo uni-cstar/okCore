@@ -7,9 +7,9 @@ import unics.okdroid.deprecated.util.log.UCSLog
  * 默认的Log
  */
 inline var LOGGER: UCSLog
-    get() = unics.okdroid.deprecated.util.log.LOGGER
+    get() = unics.okdroid.deprecated.log.LOGGER
     set(value) {
-        unics.okdroid.deprecated.util.log.LOGGER = value
+        unics.okdroid.deprecated.log.LOGGER = value
     }
 
 /**
@@ -17,7 +17,7 @@ inline var LOGGER: UCSLog
  */
 inline var logLevel: Int
     @LogLevel
-    get() = unics.okdroid.deprecated.util.log.logLevel
+    get() = unics.okdroid.deprecated.log.logLevel
     set(@LogLevel value) {
-        unics.okdroid.deprecated.util.log.logLevel = value
+        unics.okdroid.deprecated.log.logLevel = value
     }

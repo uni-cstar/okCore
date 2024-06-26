@@ -54,8 +54,11 @@ dependencies {
     //permission: 个人权限处理框架
     implementation 'halo.android:permission:1.0.5-rc'
 
+//    /*核心：基础代码库*/
+//    api 'io.github.uni-cstar:okCore:0.0.1'
     /*核心：基础代码库*/
-    api 'io.github.uni-cstar:okCore:0.0.1'
+    api project(":okCore")
+
 //    gradle.ext.depApiInert(this,'adapter-imageloader')
 //    debugApi project(path: ':adapter-imageloader')
 //    releaseApi(basDeps.adapterImageloader)

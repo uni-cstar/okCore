@@ -15,9 +15,9 @@ import androidx.core.content.ContextCompat
 import unics.okdroid.tools.res.getThemeAttrValue
 import unics.okdroidarch.R
 import unics.okdroidarch.app.FragmentContainerActivity.Builder
-import unics.okdroidarch.widget.setImmersiveStatusBar
-import unics.okdroidarch.widget.setStatusBarColor
-import unics.okdroidarch.widget.setStatusBarLightMode
+import unics.okdroidarch.kit.setImmersiveStatusBar
+import unics.okdroidarch.kit.setStatusBarColor
+import unics.okdroidarch.kit.setStatusBarLightMode
 
 /**
  * 用于装载Fragment的Activity容器，包含[ActivityArch]所有功能特性

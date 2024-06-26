@@ -8,7 +8,7 @@ import android.app.Service
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
-import bas.droid.core.util.activityManager
+import unics.okdroid.tools.os.activityManager
 
 
 /**

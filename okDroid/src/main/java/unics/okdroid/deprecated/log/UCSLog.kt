@@ -2,6 +2,7 @@ package unics.okdroid.deprecated.util.log
 
 import android.util.Log
 import androidx.annotation.IntDef
+import unics.okdroid.deprecated.log.UCSLazyLog
 
 /**
  * @see unicstar.droid.core.util.LazyLog 建议kotlin使用该方法，可以避免某些字符串变量的内存分配
