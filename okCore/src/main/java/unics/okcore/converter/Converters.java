@@ -8,6 +8,7 @@ import java.util.List;
 
 import unics.okcore.converter.gson.GsonConverter;
 import unics.okcore.converter.jackson.JacksonConverter;
+import unics.okcore.converter.moshi.MoshiConverter;
 import unics.okcore.lang.ClassesKt;
 
 /**
@@ -32,6 +33,10 @@ public class Converters {
             } else if (ClassesKt.isClassExists("com.google.gson.Gson")) {
                 System.out.println("Converters：使用GsonConverter");
                 mJsonConverter = new GsonConverter();
+            }
+            else if(ClassesKt.isClassExists("com.squareup.moshi.Moshi")){
+                System.out.println("Converters：使用MoshiConverter");
+                mJsonConverter = new MoshiConverter();
             }
 //            else if (ClassesKt.isClassExists("com.alibaba.fastjson.JSON")) {
 //                System.out.println("Converters：使用FastJsonConverter");
