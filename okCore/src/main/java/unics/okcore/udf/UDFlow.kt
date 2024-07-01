@@ -11,19 +11,18 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 
-
 /**
  * 唯一单向流
  */
-fun <Intent : UDFIntent<State>, State : UDFState> UDFlow(
+fun <State : UDFState> UDFlow(
     scope: CoroutineScope,
     initialState: State,
     intentCapacity: Int = Channel.RENDEZVOUS,
     intentOnBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
-    intentOnUndeliveredElement: ((Intent) -> Unit)? = null,
+    intentOnUndeliveredElement: ((UDFIntent<State>) -> Unit)? = null,
     stateStarted: SharingStarted = SharingStarted.Eagerly,
     stateReplay: Int = 1
-): UDFlow<Intent, State> {
+): UDFlow<State> {
     return UDFlowImpl(
         scope,
         intentCapacity,
@@ -36,15 +35,15 @@ fun <Intent : UDFIntent<State>, State : UDFState> UDFlow(
     }
 }
 
-fun <Intent : UDFIntent<State>, State : UDFState> UDFlow(
+fun <State : UDFState> UDFlow(
     scope: CoroutineScope,
     intentCapacity: Int = Channel.RENDEZVOUS,
     intentOnBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
-    intentOnUndeliveredElement: ((Intent) -> Unit)? = null,
+    intentOnUndeliveredElement: ((UDFIntent<State>) -> Unit)? = null,
     stateStarted: SharingStarted = SharingStarted.Eagerly,
     stateReplay: Int = 1,
     stateInitializer: () -> State
-): UDFlow<Intent, State> {
+): UDFlow<State> {
     return UDFlowImpl(
         scope,
         intentCapacity,
@@ -64,17 +63,17 @@ fun <Intent : UDFIntent<State>, State : UDFState> UDFlow(
  * 一个UDF 对应的MVI架构所需要的定义
  * 参考链接：https://developer.android.com/topic/architecture?hl=zh-cn#single-source-of-truth
  */
-interface UDFlow<Intent : UDFIntent<State>, State : UDFState> : Flow<State> {
+interface UDFlow<State : UDFState> : Flow<State> {
 
     /**
      * 发送意图
      */
-    fun sendIntent(scope: CoroutineScope, intent: Intent)
+    fun sendIntent(scope: CoroutineScope, intent: UDFIntent<State>)
 
     /**
      * 发送意图
      */
-    suspend fun sendIntent(intent: Intent)
+    suspend fun sendIntent(intent: UDFIntent<State>)
 
     /**
      * 当前状态值

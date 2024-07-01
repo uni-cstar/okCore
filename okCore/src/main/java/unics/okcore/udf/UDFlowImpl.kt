@@ -29,18 +29,18 @@ import kotlin.reflect.KProperty
  * [State]输出的状态类型
  * @param stateInitializer 初始状态构造器,懒加载；在
  */
-internal class UDFlowImpl<Intent : UDFIntent<State>, State : UDFState>(
+internal class UDFlowImpl<State : UDFState>(
     scope: CoroutineScope,
     intentCapacity: Int = Channel.RENDEZVOUS,
     intentOnBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
-    intentOnUndeliveredElement: ((Intent) -> Unit)? = null,
+    intentOnUndeliveredElement: ((UDFIntent<State>) -> Unit)? = null,
     stateStarted: SharingStarted = SharingStarted.Eagerly,
     stateReplay: Int = 1,
     stateInitializer: () -> State
-) : UDFlow<Intent, State> {
+) : UDFlow<State> {
 
     //intent通道
-    private val _intentChannel: Channel<Intent> =
+    private val _intentChannel: Channel<UDFIntent<State>> =
         Channel(intentCapacity, intentOnBufferOverflow, intentOnUndeliveredElement)
 
     //state流
@@ -65,7 +65,7 @@ internal class UDFlowImpl<Intent : UDFIntent<State>, State : UDFState>(
         _uiStateFlow.collect(collector)
     }
 
-    override fun sendIntent(scope: CoroutineScope, intent: Intent) {
+    override fun sendIntent(scope: CoroutineScope, intent: UDFIntent<State>) {
         log { "sendIntent($scope $intent)" }
         scope.launch {
             _intentChannel.send(intent)
@@ -75,7 +75,7 @@ internal class UDFlowImpl<Intent : UDFIntent<State>, State : UDFState>(
     /**
      * 如果没有接收者，此处可能会被挂起（受channel的配置影响）
      */
-    override suspend fun sendIntent(intent: Intent) {
+    override suspend fun sendIntent(intent: UDFIntent<State>) {
         log { "sendIntent($intent)" }
         _intentChannel.send(intent)
     }

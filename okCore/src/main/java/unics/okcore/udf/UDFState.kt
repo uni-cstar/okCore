@@ -1,3 +1,8 @@
+/**
+ * @author: unics
+ * @date: 2020/7/21
+ * @desc: 轻量级单向数据流实现，符合mvi原则
+ */
 package unics.okcore.udf
 
 /**
