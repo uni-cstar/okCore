@@ -1,6 +1,6 @@
 apply plugin: 'java-library'
 apply plugin: 'kotlin' //与该库的区别？ org.jetbrains.kotlin.jvm
-apply plugin: 'com.vanniktech.maven.publish'
+//apply plugin: 'com.vanniktech.maven.publish'
 
 java {
     sourceCompatibility JavaVersion.VERSION_1_8
