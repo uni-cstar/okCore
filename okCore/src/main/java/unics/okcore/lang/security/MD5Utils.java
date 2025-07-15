@@ -2,6 +2,10 @@ package unics.okcore.lang.security;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -144,6 +148,33 @@ public class MD5Utils {
             str[k++] = hexDigitsLower[byte0 & 0xf];
         }
         return new String(str);
+    }
+
+    /**
+     * 获取文件MD5（小写）
+     */
+    public static @NotNull String MD5(File file) throws IOException, NoSuchAlgorithmException {
+        if (!file.exists()) {
+            throw new FileNotFoundException("not found file :" + file.getAbsolutePath());
+        }
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        FileInputStream fis = new FileInputStream(file);
+        byte[] buffer = new byte[8192];
+        int read;
+        while ((read = fis.read(buffer)) != -1) {
+            md.update(buffer, 0, read);
+        }
+        fis.close();
+        return bytesToHex(md.digest());
+    }
+
+    // 字节数组转十六进制字符串
+    private static String bytesToHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (byte b : bytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
     }
 
 }

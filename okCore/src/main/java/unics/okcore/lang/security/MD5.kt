@@ -5,6 +5,8 @@
 
 package unics.okcore.lang.security
 
+import java.io.File
+
 
 /**
  * MD5加密，与方法[toMD5Lowercase]相似，算法不同
@@ -12,7 +14,10 @@ package unics.okcore.lang.security
  */
 @Deprecated(
     message = "use md5()",
-    replaceWith = ReplaceWith(expression = "this.md5()", imports = ["unics.okcore.lang.security.md5"])
+    replaceWith = ReplaceWith(
+        expression = "this.md5()",
+        imports = ["unics.okcore.lang.security.md5"]
+    )
 )
 inline fun String?.toMD5(): String {
     if (this == null)
@@ -27,6 +32,10 @@ inline fun String?.toMD5(): String {
 inline fun String?.md5(): String {
     if (this == null)
         return ""
+    return MD5Utils.MD5(this)
+}
+
+inline fun File.md5(): String {
     return MD5Utils.MD5(this)
 }
 
