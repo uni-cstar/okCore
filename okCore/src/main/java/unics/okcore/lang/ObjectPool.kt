@@ -169,7 +169,7 @@ class BoundedObjectPool<T>(
         source.reset(obj)
         // 如果池已满，忽略归还操作
         pool.offer(obj)
-        activeCount.decrementAndGet()
+        activeCount--
     }
 
     @Synchronized
